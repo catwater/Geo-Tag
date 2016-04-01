@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Geo-Tag.iml" filepath="$PROJECT_DIR$/Geo-Tag.iml" />
       <module fileurl="file://$PROJECT_DIR$/GeoTag.iml" filepath="$PROJECT_DIR$/GeoTag.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/geo-tag.iml" filepath="$PROJECT_DIR$/geo-tag.iml" />
     </modules>
   </component>
 </project>
