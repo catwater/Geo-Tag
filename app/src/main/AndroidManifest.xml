@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegistrationActivity"
+            android:label="REGISTER" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <service android:name = "com.backendless.Backendless" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
 

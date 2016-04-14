@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">Geo Tag</string>
+    <string name="app_name">GEOTAG</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_label">LOGIN</string>
+    <string name="signup">No account? Sign up here!</string>
+    <string name="email_hint">Email Address</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="signup_button_label">SIGN UP</string>
+    <string name="signup_label">SIGN UP</string>
+    <string name="triplist_label">TRIP</string>
+    <string name="trip_name">Trip Name</string>
+    <string name="trip_description">Trip Description</string>
+    <string name="trip_start_date">Start Date</string>
+    <string name="trip_end_date">End Date</string>
+    <string name="trip_is_public">Is Public?</string>
+    <string name="trip_save_button">SAVE</string>
+
+
 </resources>

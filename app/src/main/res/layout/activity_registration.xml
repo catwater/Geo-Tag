@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_first_name"
+        android:hint="@string/first_name_hint"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_last_name"
+        android:hint="@string/last_name_hint"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_username"
+        android:hint="@string/username_hint"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/enter_password"
+        android:hint="@string/password_hint"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enter_email"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_button_label"
+        android:id="@+id/signup_button"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
