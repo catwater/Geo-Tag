@@ -7,7 +7,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.geotag.tagx5.geotag.MainActivity">
+                tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,18 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOG ME IN"
-        android:id="@+id/button"
+        android:id="@+id/button_login"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_above="@+id/button"
+        android:id="@+id/text_username"
+        android:layout_above="@+id/button_login"
         android:layout_marginBottom="49dp"
         android:layout_alignEnd="@+id/textView"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_alignStart="@+id/text_password"
         android:hint="Username"/>
 
     <EditText
@@ -45,8 +45,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_above="@+id/button"
+        android:id="@+id/text_password"
+        android:layout_above="@+id/button_login"
         android:layout_centerHorizontal="true"
         android:hint="Password"/>
 
@@ -55,9 +55,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Not a User? Click to make an account!!"
-        android:id="@+id/textView2"
+        android:id="@+id/button_go_to_registration"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/button_login"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
