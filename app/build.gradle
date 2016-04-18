@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.geotag.tagx5.geotag"
-        minSdkVersion 22
-        targetSdkVersion 20
+        minSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -23,5 +23,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.backendless:backendless:3.0.8.2'
+    compile 'com.google.android.gms:play-services:8.3.0'
 }
