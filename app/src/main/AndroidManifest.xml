@@ -11,20 +11,32 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <!--<activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity"
+                  android:label="LET'S PLAY">
+
+        </activity>
+
+        <activity android:name=".LoginActivity"
+            android:label="LOGIN">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
+
+        <activity android:name=".RegistrationActivity"
+                  android:label="REGISTER"
+                  android:parentActivityName=".LoginActivity" >
+        <service android:name = "com.backendless.Backendless" />
+        >
+
+        </activity>
+
         <activity android:name=".MapsActivity"
             android:label="Map">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </activity>
 
     </application>
 
