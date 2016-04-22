@@ -5,6 +5,7 @@ package com.geotag.tagx5.geotag;
  */
 public class Player {
     private int lives;
+    private int health;
     private double latitude;
     private double longitude;
     private String name;
@@ -16,6 +17,7 @@ public class Player {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
+        health = 100;
     }
 
     public int getLives() {
@@ -56,5 +58,13 @@ public class Player {
 
     public void setWeapon(com.geotag.tagx5.geotag.Weapon weapon) {
         Weapon = weapon;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }
