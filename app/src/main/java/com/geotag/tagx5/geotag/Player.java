@@ -8,6 +8,7 @@ public class Player {
     private double latitude;
     private double longitude;
     private String name;
+    private Weapon Weapon;
 
     public Player(int lives, double latitude, double longitude, String name) {
         this.lives = lives;
@@ -49,4 +50,11 @@ public class Player {
         this.name = name;
     }
 
+    public com.geotag.tagx5.geotag.Weapon getWeapon() {
+        return Weapon;
+    }
+
+    public void setWeapon(com.geotag.tagx5.geotag.Weapon weapon) {
+        Weapon = weapon;
+    }
 }
