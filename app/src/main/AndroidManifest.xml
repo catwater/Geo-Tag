@@ -11,6 +11,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity android:name=".HomeActivity"
                   android:label="LET'S PLAY">
 
@@ -33,6 +34,8 @@
         >
 
         </activity>
+
+
 
         <activity android:name=".MapsActivity"
             android:label="Map">

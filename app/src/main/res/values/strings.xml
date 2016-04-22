@@ -16,6 +16,8 @@
     <string name="trip_end_date">End Date</string>
     <string name="trip_is_public">Is Public?</string>
     <string name="trip_save_button">SAVE</string>
+    <string name="lives_remaining">Lives Remaining:</string>
+    <string name="score">Score:</string>
 
 
 </resources>
