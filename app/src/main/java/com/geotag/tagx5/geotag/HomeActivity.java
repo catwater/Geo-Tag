@@ -19,12 +19,13 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_home);
 
         Backendless.initApp( this, BackendSettings.APPLICATION_ID,
                 BackendSettings.ANDROID_SECRET_KEY, BackendSettings.VERSION );
 
-        FragmentManager fm = getSupportFragmentManager();
+       FragmentManager fm = getSupportFragmentManager();
         if(fm.findFragmentByTag("HomeFragment")== null)
             fm.beginTransaction()
                     .add(R.id.home_fragment_container, new HomeFragment(), "HomeFragment")

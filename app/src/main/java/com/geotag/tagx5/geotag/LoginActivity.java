@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     String username = data.getStringExtra(BackendlessUser.ID_KEY);
                     mUsername.setText(username);
                     mPassword.requestFocus();
-                    Toast.makeText(this, " REGISTRATION SUCCESSFUL YAY", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, " REGISTRATION SUCCESSFUL YAY YOU'RE A STAR", Toast.LENGTH_LONG).show();
             }
         }
     }

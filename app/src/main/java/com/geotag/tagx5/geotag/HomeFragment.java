@@ -25,6 +25,21 @@ public class HomeFragment extends Fragment {
         Intent i = new Intent();
         i = getActivity().getIntent();
 
+   /* public void registerUser(String firstName, String lastName, String username, String email,
+                             String password, AsyncCallback< BackendlessUser > regCallback) {
+
+        BackendlessUser user = new BackendlessUser();
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setProperty("firstName", firstName);
+        user.setProperty("lastName", lastName);
+        user.setProperty("username", username);
+
+        //make the call to do the registration
+        Backendless.UserService.register(user, regCallback);
+
+    } */
+
         return rootView;
     }
 
