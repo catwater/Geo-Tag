@@ -3,6 +3,9 @@ package com.geotag.tagx5.geotag;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -16,7 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
+public class GamePlayActivity extends FragmentActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
 
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -24,6 +27,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationRequest locationRequest;
     private MarkerOptions markerOptions;
     private Marker mMarker;
+    private Button mButtonUpload;
+
     @Override
     protected void onStart() {
         mGoogleApiClient.connect();
@@ -39,7 +44,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_maps);
+
+
+        FragmentManager fm = getSupportFragmentManager();
+        if(fm.findFragmentByTag("HomeFragment")== null)
+            fm.beginTransaction()
+                    .add(R.id.home_fragment_container, new HomeFragment(), "HomeFragment")
+                    .commit();
+
+
+        mButtonUpload = (Button) findViewById(R.id.button);
+        Log.e("", "onCreate: ");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -54,6 +72,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .build();
         }
         setLocationRequest();
+
+
     }
     protected void setLocationRequest(){
         locationRequest = new LocationRequest();
@@ -71,6 +91,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                         mGoogleApiClient);
                 LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+                Log.e("TAG", "" + mLastLocation.getLatitude() );
+                Log.e("TAG", "" + mLastLocation.getLongitude() );
+                Log.e("", "onCreate: " );
                 mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here,20f));
             }
@@ -89,6 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-33.8675, 151.2070 );

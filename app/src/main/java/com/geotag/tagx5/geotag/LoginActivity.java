@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 LoadingCallback<BackendlessUser> loginCallback = createLoginCallback();
                 loginCallback.showDialog();
+                //wDialog();
                 loginUser(username, password, loginCallback);
 
 
@@ -87,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             public void handleResponse(BackendlessUser user) {
                 super.handleResponse(user);
 
-                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent i = new Intent(LoginActivity.this, GamePlayActivity.class);
                 startActivity(i);
 
                 Toast.makeText(LoginActivity.this, user.getProperty("username").toString() + ", you logged in successfully", Toast.LENGTH_LONG).show();
