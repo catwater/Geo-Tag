@@ -24,6 +24,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationRequest locationRequest;
     private MarkerOptions markerOptions;
     private Marker mMarker;
+
     @Override
     protected void onStart() {
         mGoogleApiClient.connect();

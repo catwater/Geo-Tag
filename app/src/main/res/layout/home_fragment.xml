@@ -23,4 +23,11 @@
             android:id="@+id/text_score"
             android:layout_gravity="center"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE LOCATION"
+            android:id="@+id/button_location_update"
+            android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>

@@ -9,7 +9,7 @@ import com.backendless.Backendless;
 /**
  * Created by csastudent2015 on 4/14/16.
  */
-public class HomeActivity extends AppCompatActivity {
+public class SetupActivity extends AppCompatActivity {
 
     private int score;
     private int numLives;
@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_setup);
 
         Backendless.initApp( this, BackendSettings.APPLICATION_ID,
                 BackendSettings.ANDROID_SECRET_KEY, BackendSettings.VERSION );
@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
        FragmentManager fm = getSupportFragmentManager();
         if(fm.findFragmentByTag("HomeFragment")== null)
             fm.beginTransaction()
-                    .add(R.id.home_fragment_container, new HomeFragment(), "HomeFragment")
+                    .add(R.id.setup_fragment_container, new HomeFragment(), "HomeFragment")
                     .commit();
 
     }
