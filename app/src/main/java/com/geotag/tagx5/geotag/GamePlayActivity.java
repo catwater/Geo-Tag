@@ -56,7 +56,7 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
                     .commit();
 
 
-        mButtonUpload = (Button) findViewById(R.id.button);
+        mButtonUpload = (Button) findViewById(R.id.button_join_game);
         Log.e("", "onCreate: ");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

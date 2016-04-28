@@ -12,10 +12,8 @@ public class BackendSettings {
     public static final String VERSION = "v1";
 
     /*
-
     backendless login for group
     email: kristenk210@gmail.com
     password: password
-
      */
 }

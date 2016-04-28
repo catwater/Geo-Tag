@@ -11,9 +11,6 @@ import com.backendless.Backendless;
  */
 public class SetupActivity extends AppCompatActivity {
 
-    private int score;
-    private int numLives;
-    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +23,9 @@ public class SetupActivity extends AppCompatActivity {
                 BackendSettings.ANDROID_SECRET_KEY, BackendSettings.VERSION );
 
        FragmentManager fm = getSupportFragmentManager();
-        if(fm.findFragmentByTag("HomeFragment")== null)
+        if(fm.findFragmentByTag("SetupFragment")== null)
             fm.beginTransaction()
-                    .add(R.id.setup_fragment_container, new HomeFragment(), "HomeFragment")
+                    .add(R.id.setup_fragment_container, new SetupFragment(), "HomeFragment")
                     .commit();
 
     }

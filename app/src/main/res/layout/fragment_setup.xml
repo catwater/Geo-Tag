@@ -5,25 +5,40 @@
               android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/accent_material_dark"
+        android:background="@color/accent_material_dark">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="JOIN GAME"
-            android:id="@+id/button"
+            android:id="@+id/button_join_game"
             android:layout_marginTop="120dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/abc_secondary_text_material_dark"
+            android:background="@color/abc_input_method_navigation_guard"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="CONTINUE GAME"
-            android:id="@+id/button2"
-            android:layout_below="@+id/button"
+            android:id="@+id/button_continue_game"
+            android:textColor="@color/abc_secondary_text_material_dark"
+            android:background="@color/abc_input_method_navigation_guard"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="GREETTTINGSNIS"
+            android:id="@+id/text_greeting"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="47dp"/>
+            android:layout_marginTop="33dp"/>
     </RelativeLayout>
 </LinearLayout>
