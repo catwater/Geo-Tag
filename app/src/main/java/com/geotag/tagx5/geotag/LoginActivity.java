@@ -89,9 +89,9 @@ public class LoginActivity extends AppCompatActivity {
                 super.handleResponse(user);
 
                 Intent i = new Intent(LoginActivity.this, SetupActivity.class);
-                startActivity(i);
                 i.putExtra("username", "" + mUsername.getText().toString());
                 Toast.makeText(LoginActivity.this, user.getProperty("username").toString() + ", you logged in successfully", Toast.LENGTH_LONG).show();
+                startActivity(i);
 
             }
         };

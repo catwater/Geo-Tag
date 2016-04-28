@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+
 
 public class SetupFragment extends Fragment {
 
@@ -21,8 +24,10 @@ public class SetupFragment extends Fragment {
         String name = getActivity().getIntent().getStringExtra("username");
 
 
+
         mGreeting = (TextView) rootView.findViewById(R.id.text_greeting);
-        mGreeting.setText("GREETINGS " + name.toUpperCase());
+        BackendlessUser b = Backendless.UserService.CurrentUser();
+        mGreeting.setText("GREETINGS " + b.getProperty("username").toString().toUpperCase());
         mJoinGameButton = (TextView) rootView.findViewById(R.id.button_join_game);
         mContinueGameButton = (Button) rootView.findViewById(R.id.button_location_update);
 
