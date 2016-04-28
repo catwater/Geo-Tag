@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-
                 startActivityForResult(intent, REGISTER_REQUEST_CODE);
 
 
@@ -60,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 LoadingCallback<BackendlessUser> loginCallback = createLoginCallback();
                 loginCallback.showDialog();
+                //wDialog();
                 loginUser(username, password, loginCallback);
 
 
@@ -88,18 +88,18 @@ public class LoginActivity extends AppCompatActivity {
             public void handleResponse(BackendlessUser user) {
                 super.handleResponse(user);
 
-                Intent i = new Intent(LoginActivity.this, SetupActivity.class);
-                i.putExtra("username", "" + mUsername.getText().toString());
-                Toast.makeText(LoginActivity.this, user.getProperty("username").toString() + ", you logged in successfully", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(LoginActivity.this, GamePlayActivity.class);
                 startActivity(i);
+
+                Toast.makeText(LoginActivity.this, user.getProperty("firstName").toString() + " you done bin logged in", Toast.LENGTH_LONG).show();
 
             }
         };
     }
 
     public void loginUser(String username, String password, AsyncCallback<BackendlessUser> loginCallback) {
-
         Backendless.UserService.login(username, password, loginCallback);
+
 
 
     }

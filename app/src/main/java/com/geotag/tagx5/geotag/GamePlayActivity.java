@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+import com.backendless.async.callback.BackendlessCallback;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -28,6 +32,9 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
     private MarkerOptions markerOptions;
     private Marker mMarker;
     private Button mButtonUpload;
+    private BackendlessUser backendlessUser;
+    private Double latBlaster = 30.0;
+    private Double longDoink = 30.0;
 
     @Override
     protected void onStart() {
@@ -45,6 +52,7 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        backendlessUser = Backendless.UserService.CurrentUser();
 
         setContentView(R.layout.activity_maps);
 
@@ -56,7 +64,22 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
                     .commit();
 
 
-        mButtonUpload = (Button) findViewById(R.id.button_join_game);
+        mButtonUpload = (Button) findViewById(R.id.button);
+        mButtonUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backendlessUser.setProperty("latitude",latBlaster);
+                backendlessUser.setProperty("longitude",longDoink);
+                backendlessUser.setProperty("firstName","poopy");
+                Backendless.UserService.update(backendlessUser, new BackendlessCallback<BackendlessUser>() {
+                    @Override
+                    public void handleResponse(BackendlessUser response) {
+
+                    }
+                });
+                Log.e("ZZOOOBA", "onClick: did it " + backendlessUser.getProperty("firstName") );
+            }
+        });
         Log.e("", "onCreate: ");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -93,6 +116,10 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
                 LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
                 Log.e("TAG", "" + mLastLocation.getLatitude() );
                 Log.e("TAG", "" + mLastLocation.getLongitude() );
+                longDoink = mLastLocation.getLongitude();
+                latBlaster = mLastLocation.getLatitude();
+
+
                 Log.e("", "onCreate: " );
                 mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here,20f));
@@ -141,5 +168,16 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
+    }
+    public boolean sendLocationDataToBackendless(){
+        final BackendlessPoint playerPoint = new BackendlessPoint(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+        Backendless.Persistence.save(playerPoint, new BackendlessCallback<BackendlessPoint>() {
+            @Override
+            public void handleResponse(BackendlessPoint point)
+            {
+                Log.i( "uploaded"," point " + point.toString() + " for ");
+            }
+        });
+        return true;
     }
 }
