@@ -1,6 +1,5 @@
 package com.geotag.tagx5.geotag;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,9 +30,15 @@ public class SetupFragment extends Fragment {
         mJoinGameButton = (TextView) rootView.findViewById(R.id.button_join_game);
         mContinueGameButton = (Button) rootView.findViewById(R.id.button_location_update);
 
+/*
+        mContinueGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(SetupActivity.this, HomeActivity.class);
 
-        Intent i = new Intent();
-        i = getActivity().getIntent();
+            }
+        });
+*/
 
 
         return rootView;
