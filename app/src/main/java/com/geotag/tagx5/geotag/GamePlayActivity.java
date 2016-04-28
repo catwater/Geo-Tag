@@ -180,4 +180,11 @@ public class GamePlayActivity extends FragmentActivity implements OnMapReadyCall
         });
         return true;
     }
+
+    public Player createPlayer(String UserId){
+        BackendlessUser b= Backendless.UserService.findById(UserId);
+        b.getProperty("username");
+        Player p = new Player(3, (double) b.getProperty("latitude"), (double) b.getProperty("longitude"), b.getProperty("username").toString());
+        return p;
+    }
 }
