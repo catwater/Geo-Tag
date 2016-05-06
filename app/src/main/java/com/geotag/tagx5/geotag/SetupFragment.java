@@ -1,5 +1,6 @@
 package com.geotag.tagx5.geotag;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +13,8 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 
 
-public class SetupFragment extends Fragment {
+public class
+SetupFragment extends Fragment {
 
     private TextView mGreeting;
     private TextView mJoinGameButton;
@@ -28,17 +30,17 @@ public class SetupFragment extends Fragment {
         BackendlessUser b = Backendless.UserService.CurrentUser();
         mGreeting.setText("GREETINGS " + b.getProperty("username").toString().toUpperCase());
         mJoinGameButton = (TextView) rootView.findViewById(R.id.button_join_game);
-        mContinueGameButton = (Button) rootView.findViewById(R.id.button_location_update);
+        mContinueGameButton = (Button) rootView.findViewById(R.id.button_continue_game);
 
-/*
+
         mContinueGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(SetupActivity.this, HomeActivity.class);
-
+                Intent intent = new Intent(getActivity(), GamePlayActivity.class);
+                startActivity(intent);
             }
         });
-*/
+
 
 
         return rootView;

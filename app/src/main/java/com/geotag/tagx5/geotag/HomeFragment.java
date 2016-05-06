@@ -3,6 +3,7 @@ package com.geotag.tagx5.geotag;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,21 @@ public class HomeFragment extends Fragment {
     private TextView mScore;
     private TextView mLivesRemaining;
     private Button mLocUpdate;
+    public static final String TAG = "HomeFragment";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.home_fragment, container, false);
         mScore = (TextView) rootView.findViewById(R.id.text_score);
         mLivesRemaining = (TextView) rootView.findViewById(R.id.text_lives_remaining);
         mLocUpdate = (Button) rootView.findViewById(R.id.button_location_update);
+
+        mLocUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+
+            }
+        });
 
 
         Intent i = new Intent();
