@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
     private int score;
     private int livesRemaining;
     public static final String TAG = "HomeFragment";
+    ArrayList<String> hitPlayers = new ArrayList<String>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.home_fragment, container, false);
@@ -59,9 +60,10 @@ public class HomeFragment extends Fragment {
     public boolean hit()
     {
         boolean m = false;
-        ArrayList<String> hitPlayers = new ArrayList<String>();
-        //check distance between user and other players
-        //if within range, set m to true,add points to user,subtract points from hit player, add hit player to hitPlayers
+        hitPlayers.clear(); //this way it'll only be the most recent hits
+
+        //loop through every player to check distance between user and other players
+        //if within range (or hit) - set m to true, add point to user, subtract points from hit player, add hit player to hitPlayers
 
 
         return m;
@@ -71,6 +73,8 @@ public class HomeFragment extends Fragment {
     {
 
         //if hit() then update mLivesRemaining & mScore
+        //if hit() maybe use a toast to display hitPlayers
+        //else use a toast to say something like "you better work on your aim 'cause YOU MISSED"
     }
 
 
