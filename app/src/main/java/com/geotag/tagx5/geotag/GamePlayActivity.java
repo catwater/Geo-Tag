@@ -35,7 +35,7 @@ public class GamePlayActivity extends FragmentActivity{
         FragmentManager fm = getSupportFragmentManager();
         if(fm.findFragmentByTag("HomeFragment")== null)
             fm.beginTransaction()
-                    .add(R.id.home_fragment_container, new HomeFragment(), "HomeFragment")
+                    .add(R.id.home_fragment_container, new HomeFragment(), "HomeFragment")//.add(R.id.rel_layout_container, new GamePlayActivity(), "") //UGHHH
                     .commit();
 
 
