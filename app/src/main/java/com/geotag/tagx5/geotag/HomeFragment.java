@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+
+import java.util.ArrayList;
+
 /**
  * Created by csastudent2015 on 4/14/16.
  */
@@ -18,26 +23,28 @@ public class HomeFragment extends Fragment {
     private TextView mScore;
     private TextView mLivesRemaining;
     private Button mLocUpdate;
+    private int score;
+    private int livesRemaining;
     public static final String TAG = "HomeFragment";
-
-    private static final String ARG_LATITUDE = "latitude";
-    private static final String ARG_LONGITUDE = "longitude";
-
-    private static final int REQUEST_LAT_LONG = 0;
+    ArrayList<String> hitPlayers = new ArrayList<String>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.home_fragment, container, false);
         mScore = (TextView) rootView.findViewById(R.id.text_score);
         mLivesRemaining = (TextView) rootView.findViewById(R.id.text_lives_remaining);
-        mLocUpdate = (Button) rootView.findViewById(R.id.button_location_update);
 
+        //display user's lives remaining & score
+        BackendlessUser k = Backendless.UserService.CurrentUser();
+        mLivesRemaining.setText("Lives Remaining: " + k.getProperty("livesRemaining"));
+        mScore.setText("Score: " + k.getProperty("score"));
+
+
+        mLocUpdate = (Button) rootView.findViewById(R.id.button_location_update);
 
         mLocUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                MapSuperDuperFragment dialog = MapSuperDuperFragment.newInstance();
-                dialog.setTargetFragment(HomeFragment.this, REQUEST_LAT_LONG);
+                FragmentManager fm = getFragmentManager();
 
             }
         });
@@ -46,21 +53,28 @@ public class HomeFragment extends Fragment {
         Intent i = new Intent();
         i = getActivity().getIntent();
 
+
         return rootView;
     }
 
-    public static MapSuperDuperFragment newInstance(Double x, Double y){
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_LATITUDE,x);
-        args.putSerializable(ARG_LONGITUDE,y);
+    public boolean hit()
+    {
+        boolean m = false;
+        hitPlayers.clear(); //this way it'll only be the most recent hits
 
-        MapSuperDuperFragment fragment = new MapSuperDuperFragment();
-        fragment.setArguments(args);
-        return fragment;
+        //loop through every player to check distance between user and other players
+        //if within range (or hit) - set m to true, add point to user, subtract points from hit player, add hit player to hitPlayers
+
+
+        return m;
     }
 
-    public double returnth(){
-        return 5.2;
+    public void fireWeapon()
+    {
+
+        //if hit() then update mLivesRemaining & mScore
+        //if hit() maybe use a toast to display hitPlayers
+        //else use a toast to say something like "you better work on your aim 'cause YOU MISSED"
     }
 
 

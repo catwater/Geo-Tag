@@ -3,31 +3,44 @@
               android:layout_width="match_parent"
               android:id="@+id/home_linear_layout"
               android:layout_height="match_parent"
-              android:orientation="vertical">
-
+              android:orientation="vertical"
+              android:weightSum="1">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Lives Remaining"
-            android:id="@+id/text_lives_remaining"
-            android:layout_gravity="center_horizontal|top"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="97dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="SCOERE ESFEWW"
             android:id="@+id/text_score"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBaseline="@+id/text_lives_remaining"
+            android:layout_alignBottom="@+id/text_lives_remaining"
+            android:layout_alignEnd="@+id/button_location_update"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UPDATE LOCATION"
-            android:id="@+id/button_location_update"
-            android:layout_gravity="center_horizontal"/>
+        <RelativeLayout
+            android:layout_width="394dp"
+            android:layout_height="182dp"
+            android:layout_weight="0.16">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UPDATE LOCATION"
+                    android:id="@+id/button_location_update"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Lives Remaining"
+                    android:id="@+id/text_lives_remaining"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignEnd="@+id/button_location_update"/>
+        </RelativeLayout>
 
 </LinearLayout>
