@@ -11,9 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
 import com.backendless.BackendlessUser;
+import com.backendless.persistence.BackendlessDataQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by csastudent2015 on 4/14/16.
@@ -27,6 +30,7 @@ public class HomeFragment extends Fragment {
     private int livesRemaining;
     public static final String TAG = "HomeFragment";
     ArrayList<String> hitPlayers = new ArrayList<String>();
+    private List<BackendlessUser> userSet;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.home_fragment, container, false);
@@ -37,7 +41,7 @@ public class HomeFragment extends Fragment {
         BackendlessUser k = Backendless.UserService.CurrentUser();
         mLivesRemaining.setText("Lives Remaining: " + k.getProperty("livesRemaining"));
         mScore.setText("Score: " + k.getProperty("score"));
-
+        downloadOtherUsers();
 
         mLocUpdate = (Button) rootView.findViewById(R.id.button_location_update);
 
@@ -77,5 +81,21 @@ public class HomeFragment extends Fragment {
         //else use a toast to say something like "you better work on your aim 'cause YOU MISSED"
     }
 
+    public void downloadOtherUsers(){
+        BackendlessDataQuery bdq = new BackendlessDataQuery();
+        LoadingCallback<BackendlessCollection<BackendlessUser>> lcbcbu = returnUsers();
+        Backendless.Persistence.of(BackendlessUser.class).find(bdq, lcbcbu);
+
+    }
+
+    public LoadingCallback<BackendlessCollection<BackendlessUser>> returnUsers(){
+        return new LoadingCallback<BackendlessCollection<BackendlessUser>>(getActivity(), "todo ") {
+            @Override
+            public void handleResponse(BackendlessCollection<BackendlessUser> response) {
+                super.handleResponse(response);
+                userSet = response.getData();
+            }
+        };
+    }
 
 }
