@@ -1,16 +1,18 @@
 package com.geotag.tagx5.geotag;
 
+import java.io.Serializable;
+
 /**
  * Created by csastudent2015 on 4/26/16.
  */
-public class BackendlessPoint {
+public class GeographicPoint implements Serializable {
 
     private double x;
     private double y;
 
-    public BackendlessPoint() {}
+    public GeographicPoint() {}
 
-    public BackendlessPoint(double x,double y) {
+    public GeographicPoint(double x, double y) {
         this.x = x;
         this.y = y;
     }

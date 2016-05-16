@@ -1,5 +1,6 @@
 package com.geotag.tagx5.geotag;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,12 +28,20 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     private LocationRequest locationRequest;
     private MarkerOptions markerOptions;
     private Marker mMarker;
+    private GeographicPoint point;
+    private static final String EXTRA_POINT = "com.geotag.tagx5.geotag.GeographicPoint";
+
 
     private GoogleApiClient mGoogleApiClient;
 
     private BackendlessUser backendlessUser;
     private Double latBlaster = 30.0;
     private Double longDoink = 30.0;
+    private static final String ARG_LATITUDE = "latitude";
+    private static final String ARG_LONGITUDE = "longitude";
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +53,7 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
                     .addApi(LocationServices.API)
                     .build();
         }
-
+        point = new GeographicPoint(0,0);
         this.getMapAsync(this);
     }
 
@@ -68,7 +77,8 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
                 Log.e("TAG", "" + mLastLocation.getLongitude() );
                 longDoink = mLastLocation.getLongitude();
                 latBlaster = mLastLocation.getLatitude();
-
+                point.setX(longDoink);
+                point.setY(latBlaster);
 
                 Log.e("", "onCreate: " );
                 mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
@@ -119,4 +129,19 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
     }
+
+    public static MapSuperDuperFragment newInstance(){
+        MapSuperDuperFragment fragment = new MapSuperDuperFragment();
+        return fragment;
+    }
+
+    private void sendResult(int resultCode,GeographicPoint gp){
+        if(getTargetFragment() == null){
+            return;
+        }
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_POINT,point);
+        getTargetFragment().onActivityResult(getTargetRequestCode(),resultCode,intent);
+    }
+
 }
