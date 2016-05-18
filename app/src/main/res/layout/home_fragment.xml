@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="SCOERE ESFEWW"
+            android:text="Score"
             android:id="@+id/text_score"
             android:layout_gravity="center_horizontal"
             android:layout_alignBaseline="@+id/text_lives_remaining"
@@ -19,18 +19,19 @@
             android:layout_alignEnd="@+id/button_location_update"/>
 
         <RelativeLayout
-            android:layout_width="394dp"
-            android:layout_height="182dp"
-            android:layout_weight="0.16">
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            android:layout_weight="0.16"
+            android:layout_gravity="center_horizontal">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UPDATE LOCATION"
+                    android:text="Update Location"
                     android:id="@+id/button_location_update"
                     android:layout_gravity="center_horizontal"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
                     android:id="@+id/text_lives_remaining"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignEnd="@+id/button_location_update"/>
+                    android:layout_centerHorizontal="true" />
         </RelativeLayout>
 
 </LinearLayout>
