@@ -23,4 +23,7 @@ public class GameLoop extends AsyncTask{
     }
 
     //Check for hit
+    private boolean checkForHit(BackendlessUser bu){
+        return false;
+    }
 }
