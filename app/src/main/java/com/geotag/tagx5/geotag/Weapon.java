@@ -1,8 +1,5 @@
 package com.geotag.tagx5.geotag;
 
-/**
- * Created by Jaydon on 4/22/2016.
- */
 public class Weapon {
     private String name;
     private int ammo;
@@ -12,12 +9,12 @@ public class Weapon {
     private int damage;
 
     public Weapon(String name, int ammo, double range, int reloadTime, boolean isExplosive, int damage){
-        this.name=name;
-        this.ammo=ammo;
-        this.range=range;
-        this.reloadTime=reloadTime;
-        this.isExplosive=isExplosive;
-        this.damage=damage;
+        this.name = name;
+        this.ammo = ammo;
+        this.range = range;
+        this.reloadTime = reloadTime;
+        this.isExplosive = isExplosive;
+        this.damage = damage;
     }
 
     public String getName() {
