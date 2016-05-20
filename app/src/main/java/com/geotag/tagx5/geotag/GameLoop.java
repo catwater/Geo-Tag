@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameLoop extends AsyncTask{
@@ -52,6 +53,29 @@ public class GameLoop extends AsyncTask{
                 //add list.get(i) to current user's list of targets in radius
                 me.addTargetInRadius(list.get(i));
             }
+        }
+    }
+
+    public List<Player> backendlessUsersToPlayers(List<BackendlessUser> input) {
+        List<Player> output = new ArrayList<Player>();
+        for(int i = 0; i < input.size(); i++) {
+            output.add(new Player(input.get(i).getObjectId()));
+        }
+        return output;
+    }
+
+    public void shoot() {
+        updateTargetsInRadius();
+        int dmg = me.getWeapon().getDamage();
+        if(me.getWeapon().isExplosive()) {
+
+        }
+    }
+
+    public void dealDamage() {
+        List<Player> targets = backendlessUsersToPlayers(me.getTargetsInRadius());
+        for (int i = 0; i < targets.size(); i++) {
+            targets.get(i).isHit(me.getWeapon());
         }
     }
 }

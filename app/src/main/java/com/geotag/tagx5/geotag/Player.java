@@ -1,8 +1,8 @@
 package com.geotag.tagx5.geotag;
 
-/**
- * Created by csastudent2015 on 4/22/16.
- */
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+
 public class Player {
     private int lives;
     private int health;
@@ -17,6 +17,15 @@ public class Player {
         this.longitude = longitude;
         this.name = name;
         health = 100;
+    }
+
+    public Player(String objID) {
+        BackendlessUser thisUser = Backendless.UserService.findById(objID);
+        lives = (int) thisUser.getProperty("livesRemaining");
+        health = (int) thisUser.getProperty("health");
+        latitude = (double) thisUser.getProperty("latitude");
+        longitude = (double) thisUser.getProperty("longitude");
+        name = (String) thisUser.getProperty("username");
     }
 
     public int getLives() {
@@ -65,7 +74,10 @@ public class Player {
 
     public void isHit(Weapon weapon) {
         health -= weapon.getDamage();
+        if(health <= 0) {
+            lives--;
+            health = 100;
+        }
     }
-
 
 }

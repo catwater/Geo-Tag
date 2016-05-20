@@ -34,4 +34,8 @@ public class CurrentPlayer extends Player {
     public void clearTargetsInRadius() {
         targetsInRadius = new ArrayList<BackendlessUser>();
     }
+
+    public List<BackendlessUser> getTargetsInRadius() {
+        return targetsInRadius;
+    }
 }
