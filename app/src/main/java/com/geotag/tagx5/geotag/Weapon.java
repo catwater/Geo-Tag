@@ -37,11 +37,11 @@ public class Weapon {
         return isExplosive;
     }
 
-    public int getDamage() { return damage; }
-
-    public int fire(){
-        return ammo--;
+    public int getDamage() {
+        return damage;
     }
 
-
+    public int fire() {
+        return ammo--;
+    }
 }
