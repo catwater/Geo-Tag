@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class HomeFragment extends Fragment {
         });
 
 
+
         Intent i = new Intent();
         i = getActivity().getIntent();
 
@@ -94,6 +96,10 @@ public class HomeFragment extends Fragment {
             public void handleResponse(BackendlessCollection<BackendlessUser> response) {
                 super.handleResponse(response);
                 userSet = response.getData();
+
+                for(BackendlessUser bu : userSet){
+                    Log.e(TAG, "onCreateView: "+ bu.getProperty("username").toString() );
+                }
             }
         };
     }
