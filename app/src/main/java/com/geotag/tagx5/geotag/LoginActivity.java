@@ -10,10 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessCollection;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 
 public class LoginActivity extends AppCompatActivity {
+
+    public BackendlessCollection<BackendlessUser> zoober;
 
     private EditText mUsername;
     private EditText mPassword;
@@ -78,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     mUsername.setText(username);
                     mPassword.requestFocus();
                     Toast.makeText(this, " REGISTRATION SUCCESSFUL YAY YOU'RE A STAR", Toast.LENGTH_LONG).show();
+                    //Backendless.UserService.CurrentUser().setProperty("player");
             }
         }
     }
@@ -89,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 super.handleResponse(user);
 
                 Intent i = new Intent(LoginActivity.this, SetupActivity.class);
+                i.putExtra()
                 Toast.makeText(LoginActivity.this, user.getProperty("firstName").toString() + " you done bin logged in", Toast.LENGTH_LONG).show();
                 startActivity(i);
 
@@ -101,6 +107,20 @@ public class LoginActivity extends AppCompatActivity {
     public void loginUser(String username, String password, AsyncCallback<BackendlessUser> loginCallback) {
         Backendless.UserService.login(username, password, loginCallback);
 
+        Backendless.Data.of( BackendlessUser.class ).find( new AsyncCallback<BackendlessCollection<BackendlessUser>>()
+        {
+            @Override
+            public void handleResponse( BackendlessCollection<BackendlessUser> users )
+            {
+                zoober = users;
+            }
+
+            @Override
+            public void handleFault( BackendlessFault backendlessFault )
+            {
+                System.out.println( "Server reported an error - " + backendlessFault.getMessage() );
+            }
+        } );
 
 
     }

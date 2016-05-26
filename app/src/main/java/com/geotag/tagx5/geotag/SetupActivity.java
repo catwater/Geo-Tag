@@ -17,6 +17,8 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
+
         setContentView(R.layout.activity_setup);
 
         Backendless.initApp( this, BackendSettings.APPLICATION_ID,

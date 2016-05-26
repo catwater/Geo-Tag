@@ -1,7 +1,6 @@
 package com.geotag.tagx5.geotag;
 
 
-
 /**
  * Created by csastudent2015 on 2/29/16.
  */
@@ -16,4 +15,6 @@ public class BackendSettings {
     email: kristenk210@gmail.com
     password: password
      */
+
+
 }

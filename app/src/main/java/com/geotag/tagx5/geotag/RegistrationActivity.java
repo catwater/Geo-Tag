@@ -16,9 +16,6 @@ import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 
 
-
-
-
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText mUsername;
@@ -27,6 +24,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mFirstName;
     private EditText mLastName;
     private Button mSignButton;
+    private Player player = new Player();
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,20 @@ public class RegistrationActivity extends AppCompatActivity {
                 String firstName = mFirstName.getText().toString();
                 String lastName = mLastName.getText().toString();
 
+                player.setUsername(username);
+                player.setFirstName(firstName);
+                player.setLastName( lastName );
+                player.setLatitude( 130);
+                player.setLongitude( 130);
+                player.setLivesRemaining( 5);
+                player.setEmail(emailAddress);
+                player.setPassword(password);
+                player.setScore(0);
+                // save object synchronously
+
+                //YOU BROKE IT AND DELETED ALL THE USERS
+
+
 
                 LoadingCallback<BackendlessUser> regCallback = createRegCallback();
                 regCallback.showDialog();
@@ -66,6 +82,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }

@@ -18,6 +18,16 @@
             android:layout_alignBottom="@+id/text_lives_remaining"
             android:layout_alignEnd="@+id/button_location_update"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Lives Remaining"
+            android:id="@+id/text_lives_remaining"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
         <RelativeLayout
             android:layout_width="360dp"
             android:layout_height="100dp"
@@ -30,18 +40,28 @@
                     android:text="Update Location"
                     android:id="@+id/button_location_update"
                     android:layout_gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_above="@+id/textView2"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Lives Remaining"
-                    android:id="@+id/text_lives_remaining"
-                    android:layout_gravity="center_horizontal|top"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Weapon Range: _____ feet"
+                    android:id="@+id/textView2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_above="@+id/button"
+                    android:layout_centerHorizontal="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHOOT"
+                    android:id="@+id/button"
+                    android:layout_gravity="center_horizontal"
                     android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"/>
+
         </RelativeLayout>
 
 </LinearLayout>
