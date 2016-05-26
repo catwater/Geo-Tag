@@ -15,18 +15,6 @@ public class GamePlayActivity extends FragmentActivity{
     //private Button mButtonUpload;
 
     @Override
-    protected void onStart() {
-        //mGoogleApiClient.connect();
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        //mGoogleApiClient.disconnect();
-        super.onStop();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

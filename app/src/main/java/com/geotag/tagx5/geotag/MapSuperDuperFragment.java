@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.backendless.BackendlessUser;
 import com.google.android.gms.common.ConnectionResult;
@@ -39,6 +43,7 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     private Double longDoink = 30.0;
     private static final String ARG_LATITUDE = "latitude";
     private static final String ARG_LONGITUDE = "longitude";
+    private Button shoot;
 
 
 
@@ -46,6 +51,8 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getMapAsync(this);
+
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(getActivity().getApplicationContext())
                     .addConnectionCallbacks(this)
@@ -54,15 +61,28 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
                     .build();
         }
         point = new GeographicPoint(0,0);
-        this.getMapAsync(this);
+        setLocationRequest();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View rootView = super.onCreateView(inflater,container,savedInstanceState);
+        shoot = (Button) rootView.findViewById(R.id.press_for_poop);
+        shoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //// TODO: 5/26/16 onclick
+            }
+        });
+        return rootView;
     }
 
     protected void setLocationRequest(){
         locationRequest = new LocationRequest();
         locationRequest.setInterval(5000);
-        //locationRequest.setFastestInterval(5000);
+        locationRequest.setFastestInterval(5000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        //locationRequest.setSmallestDisplacement(5);
+        locationRequest.setSmallestDisplacement(5);
     }
 
     protected void startLocationUpdates() {
@@ -83,6 +103,7 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
                 Log.e("", "onCreate: " );
                 mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here,20f));
+
             }
         });
     }
@@ -117,6 +138,7 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
         //mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
         mMarker = mMap.addMarker(markerOptions);
+        Log.e("shoop", "onConnected: t" );
         startLocationUpdates();
     }
 
@@ -144,4 +166,9 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
         getTargetFragment().onActivityResult(getTargetRequestCode(),resultCode,intent);
     }
 
+    @Override
+    public void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
 }
