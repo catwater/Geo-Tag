@@ -100,6 +100,19 @@ public class HomeFragment extends Fragment {
                 for(BackendlessUser bu : userSet){
                     Log.e(TAG, "onCreateView: "+ bu.getProperty("username").toString() );
                 }
+
+                BackendlessUser curr = Backendless.UserService.CurrentUser();
+
+                for(BackendlessUser bu : userSet){
+                    if (Math.abs((double) bu.getProperty("latitude") - (double) curr.getProperty("latitude")) < 100
+                            && Math.abs((double) bu.getProperty("longitude") - (double) curr.getProperty("longitude")) < 100
+                            && !(bu.getProperty("username").equals(curr.getProperty("username"))))
+                    {
+                        bu.setProperty("score", (double) bu.getProperty("score") - 1);
+                        bu.setProperty("livesRemaining", (double) bu.getProperty("livesRemaining") - 1);
+                        curr.setProperty("score", (double) curr.getProperty("score") + 1);
+                    }
+                }
             }
         };
     }

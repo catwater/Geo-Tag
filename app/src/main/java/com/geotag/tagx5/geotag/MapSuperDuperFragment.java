@@ -68,12 +68,12 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = super.onCreateView(inflater,container,savedInstanceState);
         shoot = (Button) rootView.findViewById(R.id.press_for_poop);
-        shoot.setOnClickListener(new View.OnClickListener() {
+/*        shoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //// TODO: 5/26/16 onclick
             }
-        });
+        }); */
         return rootView;
     }
 

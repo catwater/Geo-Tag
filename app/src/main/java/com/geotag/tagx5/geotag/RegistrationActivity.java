@@ -24,7 +24,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mFirstName;
     private EditText mLastName;
     private Button mSignButton;
-    private Player player = new Player();
+    //private Player player = new Player();
 
 
 
@@ -59,7 +59,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String emailAddress = mEmailAddress.getText().toString();
                 String firstName = mFirstName.getText().toString();
                 String lastName = mLastName.getText().toString();
-
+/*
                 player.setUsername(username);
                 player.setFirstName(firstName);
                 player.setLastName( lastName );
@@ -68,7 +68,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 player.setLivesRemaining( 5);
                 player.setEmail(emailAddress);
                 player.setPassword(password);
-                player.setScore(0);
+                player.setScore(0); */
                 // save object synchronously
 
                 //YOU BROKE IT AND DELETED ALL THE USERS
