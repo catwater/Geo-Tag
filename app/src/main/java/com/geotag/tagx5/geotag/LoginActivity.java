@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 super.handleResponse(user);
 
                 Intent i = new Intent(LoginActivity.this, SetupActivity.class);
-                i.putExtra();
+               // i.putExtra();
                 Toast.makeText(LoginActivity.this, user.getProperty("firstName").toString() + " you done bin logged in", Toast.LENGTH_LONG).show();
                 startActivity(i);
 

@@ -105,14 +105,15 @@ public class HomeFragment extends Fragment {
                 BackendlessUser curr = Backendless.UserService.CurrentUser();
 
                 for(BackendlessUser bu : userSet){
-                    if (Math.abs((double) bu.getProperty("latitude") - (double) curr.getProperty("latitude")) < 100
-                            && Math.abs((double) bu.getProperty("longitude") - (double) curr.getProperty("longitude")) < 100
+                    if (Math.abs(Integer.valueOf(bu.getProperty("latitude").toString()) - Integer.valueOf(curr.getProperty("latitude").toString())) < 100
+                            && Math.abs(Integer.valueOf(bu.getProperty("longitude").toString()) - Integer.valueOf(curr.getProperty("longitude").toString())) < 100
                             && !(bu.getProperty("username").equals(curr.getProperty("username"))))
                     {
-                        bu.setProperty("score", (double) bu.getProperty("score") - 1);
-                        bu.setProperty("livesRemaining", (double) bu.getProperty("livesRemaining") - 1);
-                        curr.setProperty("score", (double) curr.getProperty("score") + 1);
+                        bu.setProperty("score", (Integer.valueOf(bu.getProperty("score").toString())) - 1);
+                        bu.setProperty("livesRemaining", Integer.valueOf(bu.getProperty("livesRemaining").toString()) - 1);
+                        curr.setProperty("score", Integer.valueOf(curr.getProperty("score").toString()) + 1);
                     }
+                    Log.e(TAG, "onCreateView: "+ bu.getProperty("score").toString() );
                 }
             }
         };
