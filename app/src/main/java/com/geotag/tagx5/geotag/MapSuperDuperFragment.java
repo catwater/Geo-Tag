@@ -22,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 /**
  * Created by csastudent2015 on 5/4/16.
  */
@@ -47,6 +49,8 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
 
 
 
+
+    private ArrayList<String> playerUsername;//to do:pull information(username) from backendless so that we have a list of players in the game
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
