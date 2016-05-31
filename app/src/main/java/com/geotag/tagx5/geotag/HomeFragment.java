@@ -101,6 +101,7 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "onCreateView: "+ bu.getProperty("username").toString() );
                 }
 
+                //TODO: ADD THIS STUFF INTO SHOOT BUTTON LISTENERNENERNERNRNRNNRRR
                 BackendlessUser curr = Backendless.UserService.CurrentUser();
 
                 for(BackendlessUser bu : userSet){
