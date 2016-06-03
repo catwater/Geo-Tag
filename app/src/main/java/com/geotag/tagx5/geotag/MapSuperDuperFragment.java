@@ -96,17 +96,21 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
                 mMarker.remove();
                 mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                         mGoogleApiClient);
-                LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
-                Log.e("TAG", "" + mLastLocation.getLatitude() );
-                Log.e("TAG", "" + mLastLocation.getLongitude() );
-                longDoink = mLastLocation.getLongitude();
-                latBlaster = mLastLocation.getLatitude();
-                point.setX(longDoink);
-                point.setY(latBlaster);
+                try{
+                    LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+                    Log.e("TAG", "" + mLastLocation.getLatitude() );
+                    Log.e("TAG", "" + mLastLocation.getLongitude() );
+                    longDoink = mLastLocation.getLongitude();
+                    latBlaster = mLastLocation.getLatitude();
+                    point.setX(longDoink);
+                    point.setY(latBlaster);
 
-                Log.e("", "onCreate: " );
-                mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here,20f));
+                    Log.e("", "onCreate: " );
+                    mMarker = mMap.addMarker(markerOptions.position(here).title("Marker here"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(here,20f));
+                }catch(NullPointerException e){
+                    //// TODO: 6/2/16  
+                }
 
             }
         });
@@ -136,14 +140,18 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
     public void onConnected(Bundle bundle) {
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
-        LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
-        markerOptions = new MarkerOptions().position(here).title("Marker here");
+        try{
+            LatLng here = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+            markerOptions = new MarkerOptions().position(here).title("Marker here");
 
-        //mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
-        mMarker = mMap.addMarker(markerOptions);
-        Log.e("shoop", "onConnected: t" );
-        startLocationUpdates();
+            //mMap.addMarker(markerOptions);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
+            mMarker = mMap.addMarker(markerOptions);
+            Log.e("shoop", "onConnected: t" );
+            startLocationUpdates();
+        }catch(NullPointerException e){
+            //// TODO: 6/2/16  
+        }
     }
 
     @Override

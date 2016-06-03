@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBgheJ54HZDFLdJFVU5fVDt-lC1DQKOFQY" />
+            android:value="AIzaSyD67I4IkN3x7JgP5lbuWk9F8k_Ax5DLyXI" />
 
         <activity android:name=".SetupActivity"
                   android:label="LET'S PLAY">
