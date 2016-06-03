@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.*;
 
 public class GamePlayActivity extends FragmentActivity{
 
 
     private GoogleApiClient mGoogleApiClient;
+    public static final String TAG ="GamePlayActivity";
+    private com.google.android.gms.maps.MapFragment mapFragment;
+    private MapSuperDuperFragment msdf;
     //private Button mButtonUpload;
 
     @Override
@@ -45,17 +49,20 @@ public class GamePlayActivity extends FragmentActivity{
 //        });
         Log.e("", "onCreate: ");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
+        msdf = new MapSuperDuperFragment();
+        mapFragment = (com.google.android.gms.maps.MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         if(fm.findFragmentByTag("map")== null)
             fm.beginTransaction()
-                    .add(R.id.map, new MapSuperDuperFragment(), "MapSuperDuperFragment")
+                    .add(R.id.map, msdf, "MapSuperDuperFragment")
                     .commit();
 
 
 
 
+    }
+    public void performFunction(View v){
+        msdf.shoot();
     }
 
 }

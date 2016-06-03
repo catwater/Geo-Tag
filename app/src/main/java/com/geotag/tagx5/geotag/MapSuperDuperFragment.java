@@ -16,6 +16,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
  */
 public class MapSuperDuperFragment extends SupportMapFragment implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
     private GoogleMap mMap;
+    public static final String TAG = "MapSuperDuperFragment";
 
     private Location mLastLocation;
     private LocationRequest locationRequest;
@@ -150,7 +152,7 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
             Log.e("shoop", "onConnected: t" );
             startLocationUpdates();
         }catch(NullPointerException e){
-            //// TODO: 6/2/16  
+            //// TODO: 6/2/16
         }
     }
 
@@ -183,4 +185,9 @@ public class MapSuperDuperFragment extends SupportMapFragment implements OnMapRe
         mGoogleApiClient.connect();
         super.onStart();
     }
+
+    public void shoot() {
+        Log.e(TAG, "shoot: a poopy ");
+    }
+
 }
